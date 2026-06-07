@@ -1,0 +1,54 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build OpenGL project",
+      "type": "shell",
+      "command": "clang++",
+      "args": [
+        "DX_studies_2025/DX_studies_2025/*.cpp",
+        "common_functions/*.cpp",
+        "-std=c++17",
+        "-DGL_SILENCE_DEPRECATION",
+        "-Icommon_functions",
+        "-I.",
+        "-I/opt/homebrew/opt/opencv/include/opencv4",
+        "-L/opt/homebrew/opt/opencv/lib",
+        "-lopencv_core",
+        "-lopencv_imgproc",
+        "-lopencv_highgui",
+        "-lopencv_videoio",
+        "-lopencv_imgcodecs",
+        "-lopencv_calib3d",
+        "-lopencv_features2d",
+        "-framework", "OpenGL",
+        "-framework", "GLUT",
+        "-o", "DX_studies_2025/build/OpenGLApp"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"]
+    },
+  {
+  "label": "run OpenGL project",
+  "type": "shell",
+  "dependsOn": "build OpenGL project",
+  "command": "${workspaceFolder}/DX_studies_2025/build/OpenGLApp",
+  "options": {
+    "cwd": "${workspaceFolder}/DX_studies_2025"
+  },
+  "group": {
+    "kind": "test",
+    "isDefault": true
+  }
+}
+
+
+
+
+
+
+  ]
+}

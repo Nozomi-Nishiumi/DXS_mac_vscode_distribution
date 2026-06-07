@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run OpenGLApp",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/DX_studies_2025/build/OpenGLApp",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}/DX_studies_2025",
+      "environment": [],
+      "externalConsole": true,
+      "MIMode": "lldb",
+      "preLaunchTask": "build OpenGL project"
+    }
+  ]
+}

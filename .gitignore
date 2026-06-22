@@ -10,3 +10,5 @@ DX_studies_2025/output/*
 *.xcuserstate
 xcuserdata/
 !DX_studies_2025/output/cam_intrinsic_prameters_test.yml
+# color-threshold state, auto-generated per run/environment (mode 5 で各自調整)
+cam0_*.yml

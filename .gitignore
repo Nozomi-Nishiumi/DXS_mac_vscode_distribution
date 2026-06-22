@@ -9,3 +9,4 @@ DX_studies_2025/output/*
 .DS_Store
 *.xcuserstate
 xcuserdata/
+!DX_studies_2025/output/cam_intrinsic_prameters_test.yml

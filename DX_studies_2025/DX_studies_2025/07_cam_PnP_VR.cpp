@@ -394,13 +394,13 @@ void cap(){
 void tgt_tracking(){
 //    camera.tgt.loadparameters("tgt");
 
-    string yml="./output/cam_intrinsic_prameters_new.yml";
+    // string yml="./output/cam_intrinsic_prameters_new.yml";
 
 
-    cv::FileStorage fs(yml, cv::FileStorage::READ);
-    fs["cameraMatrix"] >> camera.cam_mat;
-    fs["distCoeffs"] >> camera.dist_coefs;
-    fs.release();
+    // cv::FileStorage fs(yml, cv::FileStorage::READ);
+    // fs["cameraMatrix"] >> camera.cam_mat;
+    // fs["distCoeffs"] >> camera.dist_coefs;
+    // fs.release();
     while(1){
         if(camera.im_ori.empty()||(camera.rvec.rows+camera.rvec.cols)!=4){continue;}
         Mat src=camera.im_ori.clone();
@@ -470,7 +470,7 @@ void calib(){
     };
 
 
-    string yml="./output/cam_intrinsic_prameters_new.yml";
+    string yml="./output/cam_intrinsic_prameters_test.yml";
 
 
     cv::FileStorage fs(yml, cv::FileStorage::READ);

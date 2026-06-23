@@ -8,6 +8,7 @@
       "program": "${workspaceFolder}/DX_studies_2025/build/OpenGLApp",
       "args": [],
       "cwd": "${workspaceFolder}/DX_studies_2025",
+      "env": { "OPENCV_AVFOUNDATION_SKIP_AUTH": "1" },
       "preLaunchTask": "build OpenGL project"
     }
   ]

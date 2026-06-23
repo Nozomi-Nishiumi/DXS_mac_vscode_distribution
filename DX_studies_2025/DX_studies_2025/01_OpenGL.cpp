@@ -124,13 +124,6 @@ void free4Students(){
     glEnd();
 
 
-//    double n=5;
-//    glBegin(GL_LINE_LOOP);
-//    for(int i=0;i<n;i++){
-//        glVertex3d(50*sin(2.0*pi/n*i),50*cos(2.0*pi/n*i),0);
-//    }
-//    glEnd();
-
 
     float t = glutGet(GLUT_ELAPSED_TIME) / 5000.0f;
 
@@ -148,19 +141,13 @@ void draw_CGs(){
     glTranslated(100, 0, 0);
     glutWireSphere(30,100,20);
 
-//    glTranslated(50, 0, 0);
-//
-//    int N=100;
-//    glPushMatrix();
-//    glScaled(10, 10, 10);
-//    glBegin(GL_LINE_LOOP);
-//    for(int i=0;i<N;i++){
-//        double theta=(double)i/(double)N*2.0*pi;
-//        glVertex3d(sin(theta),cos(theta),0);
-//    }
-//    glEnd();
-//    glPopMatrix();
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+     if (model) {
+        glmDraw(model, GLM_SMOOTH | GLM_COLOR);
+    }
+
     glDisable(GL_LIGHTING);
+   glTranslated(50, 0, 0);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     if (model) {
         glmDraw(model, GLM_SMOOTH);
@@ -184,7 +171,7 @@ int main1(int argc, char** argv) {
     std::cout << "Current path: " << std::filesystem::current_path() << std::endl;
 
     
-    model = glmReadOBJ("../common_data/lego.obj");
+    model = glmReadOBJ("../common_data/CG_objects/lego.obj");
 
     if (!model) {
         fprintf(stderr, "OBJファイルの読み込みに失敗しました\n");

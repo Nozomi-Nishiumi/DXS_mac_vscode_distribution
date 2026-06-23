@@ -643,26 +643,26 @@ int main7(int argc, char *argv[])
 
     app_gl.init(argc, argv);
 
-    loadOBJ(models[0],"../common_data/Bulbasaur.obj");
+    loadOBJ(models[0],"../common_data/CG_objects/CH47.obj");
     glmScale(models[0],400);
     Vec3 size=getBoundingBoxSize(models[0]);
     glmTranslateModel(models[0], 0.0f, 0.0f, 89.3357544/2.0);
 
-    loadOBJ(models[1],"../common_data/lego.obj");
+    loadOBJ(models[1],"../common_data/CG_objects/lego.obj");
     glmScale(models[1],40);
     glmTranslateModel(models[1], 0.0f, 0.0f, 40.0/2.0);
 
-    loadOBJ(models[2],"../common_data/wall.obj");
+    loadOBJ(models[2],"../common_data/CG_objects/wall.obj");
     glmScale(models[2],40.1);
     glmTranslateModel(models[2], 0.0f, 0.0f, 40.1/2.0);
     size=getBoundingBoxSize(models[2]);
 
-    loadOBJ(models[3],"../common_data/ripstick.obj");
+    loadOBJ(models[3],"../common_data/CG_objects/ripstick.obj");
     glmScale(models[3],70.0);
     glmTranslateModel(models[3], 0.0f, 0.0f, 40.1/2.0);
     size=getBoundingBoxSize(models[3]);
 
-    LoadGLTextures("../common_data/test_image.png", texture_7[1]);
+    // LoadGLTextures("../common_data/test_image.png", texture_7[1]);
 
     GLfloat light_pos[] = {0,0,100.0f,0};
     GLfloat light_amb[] = { 0.0, 0.0, 0.0, 1.0};

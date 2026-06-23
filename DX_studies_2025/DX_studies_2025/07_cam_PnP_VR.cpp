@@ -196,16 +196,29 @@ void draw_CGmodels(){
     if (models[1]&&trackdata_3d.size()>0&&
         cam.x!=0&&cam.y!=0&&cam.z!=0&&
         trackdata_3d.size()>0){
-        vector<Point3f> tgt=intersect(cam,trackdata_3d,35);
+        vector<Point3f> tgt=intersect(cam,trackdata_3d,0);
+        glPushMatrix();
+        glTranslated(tgt[0].x, tgt[0].y, tgt[0].z);
+        glmDraw(models[1], GLM_SMOOTH | GLM_COLOR);
+        glPopMatrix();
+}
+}
+
+void draw_GhostCGmodels(){
+    if (models[1]&&trackdata_3d.size()>0&&
+        cam.x!=0&&cam.y!=0&&cam.z!=0&&
+        trackdata_3d.size()>0){
+        vector<Point3f> tgt=intersect(cam,trackdata_3d,0);
 
         glDisable(GL_LIGHTING);
         glPushMatrix();
-        glTranslated(tgt[0].x, tgt[0].y, 0);
+        glTranslated(tgt[0].x, tgt[0].y, tgt[0].z);
         glColor4d(0, 0.3, 0, 0.05);
         glmDraw(models[1], GLM_SMOOTH);
         glPopMatrix();
 }
 }
+
 void draw_simplecg(){
     float time_s = glutGet(GLUT_ELAPSED_TIME)/1000.0;
     glPushMatrix();
@@ -231,32 +244,45 @@ void FBO_contents(){
         viewsetting();                        // ユーザーが視点1を選択中
     }
 
-    float time_s = glutGet(GLUT_ELAPSED_TIME)/1000.0;
 
 
-    glDepthMask(GL_FALSE);  // 深度バッファ書き込みOFF
-    glDisable(GL_LIGHTING);
-    GLfloat light_pos[] = {0,0,100.0f,0};
-    GLfloat plane[4] = {0.0f, 0.0f, 1.0f, 0.0f};
-    drawSoftShadow(light_pos, plane, draw_simplecg);
-    glDepthMask(GL_TRUE);   // 書き込みONに戻す
+//     float time_s = glutGet(GLUT_ELAPSED_TIME)/1000.0;
+//     glEnable(GL_BLEND);
+//     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-    glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);
-    glPushMatrix();
-    glTranslated(time_s*5.0, 0, time_s*5.0);
-    glmDraw(models[0], GLM_SMOOTH| GLM_COLOR);
-    glPopMatrix();
+
+//     glDepthMask(GL_FALSE);  // 深度バッファ書き込みOFF
+
+//     glDisable(GL_LIGHTING);
+//     GLfloat light_pos[] = {0,0,100.0f,0};
+//     GLfloat plane[4] = {0.0f, 0.0f, 1.0f, 0.0f};
+//     drawSoftShadow(light_pos, plane, draw_simplecg);
+    
+//     glDepthMask(GL_TRUE);   // 書き込みONに戻す
+//  glEnable(GL_BLEND);
+//     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+
+//     glEnable(GL_LIGHTING);
+//     glEnable(GL_LIGHT0);
+//     glPushMatrix();
+//     glTranslated(time_s*5.0, 0, time_s*5.0);
+//     glmDraw(models[0], GLM_SMOOTH| GLM_COLOR);
+//     glPopMatrix();
+
+    
 
 
     draw_CGmodels();
+
 }
 
 
 void FBO_layer(){
     glClear(GL_DEPTH_BUFFER_BIT);
 //    glEnable(GL_DEPTH_TEST);
-
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     FBO fboObj2;
     double aspect;
     if (camera.capsize.width > 0 && camera.capsize.height > 0) {
@@ -352,8 +378,7 @@ void myDisplay_7() {
 
 
 //    occulusion_viewer();
-//    FBO_layer();
-
+   FBO_layer();
 
 }
 

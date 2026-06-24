@@ -16,7 +16,7 @@ GLMmodel* model = nullptr;
 
 
 void lightSetting(){
-    GLfloat light_pos[] = { 0.0f,100.0f*(GLfloat)cos((GLfloat)frame/60.0/10.0*2.0*pi), 100.0f*(GLfloat)sin((GLfloat)frame/60.0/10.0*2.0*pi), 1.0f };
+    GLfloat light_pos[] = { 0.0f,1000.0f*(GLfloat)cos((GLfloat)frame/1000.0), 1000.0f*(GLfloat)sin((GLfloat)frame/1000.0), 1.0f };
     GLfloat light_amb[] = { 0.5f, 0.5f, 0.5f, 1.0f };
     GLfloat light_dif[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     GLfloat light_spec[]= { 0.1f, 0.1f, 0.1f, 0.1f };
@@ -34,14 +34,6 @@ void view_setting(){
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();//行列の初期化
-
-//    app.vangle=2;
-//    app.POVfrom[0]=0;
-//    app.POVfrom[1]=-1;
-//    app.POVfrom[2]=10000;
-//    app.POVto[0]=0;
-//    app.POVto[1]=0;
-//    app.POVto[2]=0;
 
     gluPerspective(app.vangle,1500.0/800.0, 0.01, 1000000000.0);
     gluLookAt(app.POVfrom[0],app.POVfrom[1],app.POVfrom[2],
@@ -104,16 +96,6 @@ void free4Students(){
     glPopMatrix();
 
 
-    glBegin(GL_LINE_LOOP);
-    double N=5;
-    for(int i=0;i<N; i++){
-        double theta=2.0*pi/N*i;
-        glVertex3d(50*sin(theta),50*cos(theta),0);
-
-    }
-    glEnd();
-
-
     glTranslated(-100, -100, 0);
     glColor3d( 0.7,1.0, 0.7);
     glLineWidth(3);
@@ -136,18 +118,39 @@ void draw_CGs(){
     glEnable(GL_LIGHT0);
     lightSetting();
 
-    glTranslated(100, 0, 0);
-    glutSolidCube(30);
+    glPushMatrix();
+    glTranslated(100, -150, 0);
+    glutSolidCube(20);
+
     glTranslated(100, 0, 0);
     glutWireSphere(30,100,20);
+    glPopMatrix();
+    
+    glPushMatrix();
+    glTranslated(0.0f,1000.0f*(GLfloat)cos((GLfloat)frame/1000.0), 1000.0f*(GLfloat)sin((GLfloat)frame/1000.0));
+    glColor3d(1,1,1);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glutSolidSphere(30,100,20);
+    glPopMatrix();
+
+
+    glColor3d(1, 0.7, 0.7);
+    glTranslated(0, -500, 0);
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
      if (model) {
         glmDraw(model, GLM_SMOOTH | GLM_COLOR);
     }
 
+    glTranslated(50, 0, 0);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    if (model) {
+        glmDraw(model, GLM_SMOOTH);
+    }
+
     glDisable(GL_LIGHTING);
-   glTranslated(50, 0, 0);
+    glTranslated(50, 0, 0);
+    glRotated(90, 0, 0, 1);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     if (model) {
         glmDraw(model, GLM_SMOOTH);
@@ -181,12 +184,12 @@ int main1(int argc, char** argv) {
     glmFacetNormals(model);
     glmVertexNormals(model, 90.0);
     glmUnitize(model);
-    glmScale(model,200.0);
+    glmScale(model,100.0);
+    glmTranslateModel(model, 0.0f, 0.0f, 100.0/2.0);
 
     app.setDisplayFunction(myDisplay);  // ユーザーの描画関数を登録
     app.setAddDisplayFunction(additionalDisplay);  // ユーザーの描画関数をデフォルトに追加
     app.setWindowSize(1500, 800);  // ユーザーの描画関数を登録
-
 
     app.init(argc, argv);
     app.run();

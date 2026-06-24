@@ -49,9 +49,11 @@ brew install --cask xquartz
 - ダウンロードした dmg をダブルクリックし、アプリを「アプリケーション」フォルダに移動すればインストール完了です。
 
 ## 手順6. プロジェクトの取得（GitHub から）
-配布リポジトリを**ローカルディスク**にクローンします（クラウド同期フォルダ不可）。
+配布リポジトリを**ローカルディスク**にクローンします（クラウド同期フォルダ不可）。`~/Developer` などへ移動してから clone します。
 ```
 mkdir -p ~/Developer && cd ~/Developer
+```
+```
 git clone https://github.com/Nozomi-Nishiumi/DXS_mac_vscode_distribution.git
 ```
 VS Code の **File → Open Folder** で、クローンしたフォルダ（例 `~/Developer/DXS_mac_vscode_distribution`）を開きます。フォルダの作成者を信頼するか聞かれたら **Yes** をクリックします。

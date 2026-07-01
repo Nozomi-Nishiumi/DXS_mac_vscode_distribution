@@ -5,9 +5,9 @@
       "name": "Debug OpenGLApp (CodeLLDB)",
       "type": "lldb",
       "request": "launch",
-      "program": "${workspaceFolder}/DX_studies_2025/build/OpenGLApp",
+      "program": "${workspaceFolder}/DX_studies/build/OpenGLApp",
       "args": [],
-      "cwd": "${workspaceFolder}/DX_studies_2025",
+      "cwd": "${workspaceFolder}/DX_studies",
       "env": { "OPENCV_AVFOUNDATION_SKIP_AUTH": "1" },
       "preLaunchTask": "build OpenGL project"
     }

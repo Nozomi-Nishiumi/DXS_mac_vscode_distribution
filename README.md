@@ -93,7 +93,7 @@ VS Code の **File → Open Folder** で、クローンしたフォルダ（例 
 | 6 | カメラ較正 → `output/cam_intrinsic_prameters_test.yml` を出力 |
 | 7 | PnP による VR 表示（mode 5・6 の結果を読み込み。`v` キーで視点切替） |
 
-3Dモデル（.obj/.mtl）は `common_data/CG_objects/` に、実行時生成ファイルは `DX_studies_2025/output/` に置かれます。
+3Dモデル（.obj/.mtl）は `common_data/CG_objects/` に、実行時生成ファイルは `DX_studies/output/` に置かれます。
 
 ## トラブルシューティング
 - **`opencv2/opencv.hpp` が見つからない / リンクエラー** → 手順1・2を確認（`brew --prefix` が `/opt/homebrew` であること）。
